@@ -1,0 +1,133 @@
+:root {
+  --term-bg: #121212; /* Deep but realistic dark */
+  --term-fg: #d3d7cf; /* Soft terminal gray/white */
+  
+  /* Muted, realistic terminal colors focusing on the prompt */
+  --term-prompt-user: #8AE234; /* Pop!_OS Green */
+  --term-prompt-host: #729FCF; /* Pop!_OS Blue */
+  --term-prompt-dir:  #34E2E2; /* Pop!_OS Cyan */
+  --term-prompt-sym:  #eeeeec; 
+  
+  --font-mono: 'Ubuntu Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--term-bg);
+  color: var(--term-fg);
+  line-height: 1.5;
+  font-size: 16px;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+.terminal-container {
+  height: 100%;
+  padding: 24px 40px; /* More horizontal breathing room */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  cursor: text;
+}
+
+/* History block - Added large spacing and a subtle separator to keep it clean */
+.history-block {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.history-block::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 50px;
+  height: 1px;
+  background-color: rgba(211, 215, 207, 0.1); /* Very subtle divider */
+}
+
+.command-line {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.prompt {
+  font-weight: bold;
+  white-space: pre;
+  flex-shrink: 0;
+}
+
+/* Colors strictly focused on the prompt */
+.prompt-user { color: var(--term-prompt-user); }
+.prompt-at { color: var(--term-prompt-sym); }
+.prompt-host { color: var(--term-prompt-host); }
+.prompt-symbol { color: var(--term-prompt-sym); margin-right: 8px;}
+.prompt-dir { color: var(--term-prompt-dir); }
+
+.command-text {
+  color: var(--term-fg);
+  word-break: break-all;
+}
+
+/* Input line alignments - Pixel perfect to match prompt to fix clunkiness */
+.input-line {
+  display: flex;
+  align-items: center; 
+  padding-bottom: 60px; /* Ensuring scrolling clears the bottom comfortably */
+  margin-top: 12px;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--term-fg);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  outline: none;
+  flex-grow: 1;
+  caret-color: var(--term-prompt-user);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 1em;
+}
+
+/* General Output Styling (Mostly clean gray/white) */
+.cmd-output {
+  margin-top: 8px;
+  white-space: pre-wrap;
+  color: var(--term-fg);
+  max-width: 100%; /* Utilize full horizontal space */
+}
+
+/* Minimalist highlighting if needed, but mostly relying on structure */
+.highlight { color: #eeeeec; font-weight: bold; }
+.dim { color: #888a85; }
+
+/* Links */
+a.term-link {
+  color: var(--term-prompt-dir);
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+a.term-link:hover {
+  color: var(--term-prompt-user);
+  text-decoration-style: solid;
+}
+
+/* Scrollbar tweaks mimicking dark terminal */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--term-bg); }
+::-webkit-scrollbar-thumb { background: #333; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
