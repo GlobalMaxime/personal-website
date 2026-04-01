@@ -127,7 +127,34 @@ a.term-link:hover {
 }
 
 /* Scrollbar tweaks mimicking dark terminal */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--term-bg); }
-::-webkit-scrollbar-thumb { background: #333; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* ---- Mobile Responsiveness Engine ---- */
+@media (max-width: 768px) {
+  .terminal-container {
+    padding: 16px 16px; /* Reclaim screen real-estate */
+  }
+
+  body {
+    font-size: 11px; /* Heavily compress ASCII scale to fit standard viewports */
+  }
+
+  .terminal-input {
+    font-size: 13px; /* Keep input slightly larger for iOS/Android tap legibility */
+  }
+
+  .cmd-output {
+    overflow-x: auto; /* Enable horizontal swipe precisely on the data blocks so the command line doesn't break */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px; /* Breathing room for the horizontal scrollbar */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 9px; /* Maximum density for portrait smartphones */
+  }
+}
