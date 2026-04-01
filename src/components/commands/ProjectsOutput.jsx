@@ -2,13 +2,14 @@ import React from 'react';
 import Typewriter from '../Typewriter';
 
 const ProjectsOutput = () => {
-  // Using wider table ~95 chars
-  const tableBorder = <span className="dim">+------------------------------------------------+-------------------------+-------------+</span>;
-  const tableHeader = <span className="highlight">| Project Title                                  | Domain                  | References  |</span>;
+  const topBorder    = <span className="dim">╭────────────────────────────────────────────────┬─────────────────────────┬─────────────╮</span>;
+  const midBorder    = <span className="dim">├────────────────────────────────────────────────┼─────────────────────────┼─────────────┤</span>;
+  const bottomBorder = <span className="dim">╰────────────────────────────────────────────────┴─────────────────────────┴─────────────╯</span>;
+  const tableHeader  = <span className="highlight">│ Project Title                                  │ Domain                  │ References  │</span>;
 
   const formatRow = (title, domain, link) => (
     <span>
-      <span className="dim">|</span> {title.padEnd(46, ' ')} <span className="dim">|</span> {domain.padEnd(23, ' ')} <span className="dim">|</span> {link} <span className="dim">|</span>
+      <span className="dim">│</span> {title.padEnd(46, ' ')} <span className="dim">│</span> {domain.padEnd(23, ' ')} <span className="dim">│</span> {link} <span className="dim">│</span>
     </span>
   );
 
@@ -22,18 +23,18 @@ const ProjectsOutput = () => {
 
   const lines = [
     <span className="dim" style={{ display: 'block', marginBottom: '16px' }}>Fetching project repositories... done.</span>,
-    tableBorder,
+    topBorder,
     tableHeader,
-    tableBorder,
+    midBorder,
     row1,
     row2,
     row3,
-    tableBorder,
+    midBorder,
     row4,
     row5,
     row6,
     row7,
-    tableBorder,
+    bottomBorder,
     <span className="dim" style={{ display: 'block', marginTop: '16px' }}>7 records returned.</span>
   ];
 

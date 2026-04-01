@@ -164,21 +164,26 @@ const SpeedTestOutput = () => {
   };
 
   if (phase === 'complete') {
+    const top = "╭─────────────┬────────────────────────────╮";
+    const mid = "├─────────────┼────────────────────────────┤";
+    const bot = "╰─────────────┴────────────────────────────╯";
+    
     const lines = [
       <div key="s0" className="dim">Connection telemetry successful.</div>,
       <br key="sb1"/>,
-      <div key="s1" className="dim">| Metric      | Measured Output            |</div>,
-      <div key="s2" className="dim">|-------------|----------------------------|</div>,
+      <div key="s_top" className="dim" style={{ whiteSpace: 'pre' }}>{top}</div>,
+      <div key="s1" className="dim" style={{ whiteSpace: 'pre' }}>│ Metric      │ Measured Output            │</div>,
+      <div key="s2" className="dim" style={{ whiteSpace: 'pre' }}>{mid}</div>,
       <div key="s3" style={{ whiteSpace: 'pre' }}>
-        <span className="dim">|</span><span className="color-yellow"> Ping        </span><span className="dim">|</span><span className="color-green"> {(results.ping + ' ms').padEnd(26, ' ')} </span><span className="dim">|</span>
+        <span className="dim">│</span><span className="color-yellow"> Ping        </span><span className="dim">│</span><span className="color-green"> {(results.ping + ' ms').padEnd(26, ' ')} </span><span className="dim">│</span>
       </div>,
       <div key="s4" style={{ whiteSpace: 'pre' }}>
-        <span className="dim">|</span><span className="color-yellow"> Download    </span><span className="dim">|</span><span className="color-green"> {(results.down + ' Mbps').padEnd(26, ' ')} </span><span className="dim">|</span>
+        <span className="dim">│</span><span className="color-yellow"> Download    </span><span className="dim">│</span><span className="color-green"> {(results.down + ' Mbps').padEnd(26, ' ')} </span><span className="dim">│</span>
       </div>,
       <div key="s5" style={{ whiteSpace: 'pre' }}>
-        <span className="dim">|</span><span className="color-yellow"> Upload      </span><span className="dim">|</span><span className="color-green"> {(results.up + ' Mbps').padEnd(26, ' ')} </span><span className="dim">|</span>
+        <span className="dim">│</span><span className="color-yellow"> Upload      </span><span className="dim">│</span><span className="color-green"> {(results.up + ' Mbps').padEnd(26, ' ')} </span><span className="dim">│</span>
       </div>,
-      <div key="s6" className="dim">|-------------|----------------------------|</div>
+      <div key="s6" className="dim" style={{ whiteSpace: 'pre' }}>{bot}</div>
     ];
     return (
       <div style={{ fontFamily: 'var(--font-mono)' }}>

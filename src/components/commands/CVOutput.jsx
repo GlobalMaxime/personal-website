@@ -2,24 +2,12 @@ import React from 'react';
 import Typewriter from '../Typewriter';
 
 const CVOutput = () => {
-  // Using ~90 columns of horizontal space now
-  const boxTop = <span className="dim">┌─────────────────────────────────────────────────────────────────────────────────────────┐</span>;
-  const boxBot = <span className="dim">└─────────────────────────────────────────────────────────────────────────────────────────┘</span>;
-  const divider = <span className="dim">├─────────────────────────────────────────────────────────────────────────────────────────┤</span>;
-  
-  const textLine = (text) => <span><span className="dim">│</span> {text.padEnd(87, ' ')} <span className="dim">│</span></span>;
-
   const lines = [
-    boxTop,
-    textLine("MILAN TOOHEY"),
-    boxBot,
-    <br key="br1" />,
-
     <span className="highlight">[TECHNICAL SKILLS]</span>,
     <span>• Languages: Python, SQL, VBA/VBS, PowerShell, HTML/CSS.</span>,
     <span>• Data & Optimization: Integer Linear Programming (PuLP), Combinatorial Opt, Pandas, NumPy, SQLite, ETL.</span>,
     <span>• Security: Reverse Engineering, Pen Testing (IDOR, Domain Fronting), Network Arch (VLANs, DNS, DHCP),</span>,
-    <span>            Packet Analysis, Cryptography (SAML/OAuth flows).</span>,
+    <span>  Packet Analysis, Cryptography (SAML/OAuth flows).</span>,
     <span>• Tools: Flask, PyQt5, MySQL, Raspberry Pi, REST APIs, Google Cloud Platform (GCP).</span>,
     <br key="br2" />,
 

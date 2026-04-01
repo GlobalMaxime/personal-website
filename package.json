@@ -8,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx",
     "preview": "vite preview",
-    "predeploy":"npm build runtime",
-    "deploy":"gh-pages -d list"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",

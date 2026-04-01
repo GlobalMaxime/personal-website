@@ -104,22 +104,27 @@ const WhoamiOutput = () => {
      return s.padEnd(len, ' ');
   };
 
+  const topBorder = `╭─${'─'.repeat(maxKey)}─┬─${'─'.repeat(maxVal)}─╮`;
+  const midBorder = `├─${'─'.repeat(maxKey)}─┼─${'─'.repeat(maxVal)}─┤`;
+  const botBorder = `╰─${'─'.repeat(maxKey)}─┴─${'─'.repeat(maxVal)}─╯`;
+
   const lines = [
     <div key="w0" className="dim">Harvesting bypass payload telemetry...</div>,
     <br key="w1"/>,
-    <div key="w2" className="dim">| {pad("Metric", maxKey)} | {pad("Identification Payload", maxVal)} |</div>,
-    <div key="w3" className="dim">|{'-'.repeat(maxKey + 2)}|{'-'.repeat(maxVal + 2)}|</div>
+    <div key="w_top" className="dim" style={{ whiteSpace: 'pre' }}>{topBorder}</div>,
+    <div key="w2" className="dim" style={{ whiteSpace: 'pre' }}>│ {pad("Metric", maxKey)} │ {pad("Identification Payload", maxVal)} │</div>,
+    <div key="w3" className="dim" style={{ whiteSpace: 'pre' }}>{midBorder}</div>
   ];
   
   Object.entries(telemetry).forEach(([k, v], idx) => {
     lines.push(
       <div key={`w4-${idx}`} style={{ whiteSpace: 'pre' }}>
-         <span className="dim">| </span><span className="color-yellow">{pad(k, maxKey)}</span><span className="dim"> | </span><span className="color-cyan">{pad(v, maxVal)}</span><span className="dim"> |</span>
+         <span className="dim">│ </span><span className="color-yellow">{pad(k, maxKey)}</span><span className="dim"> │ </span><span className="color-cyan">{pad(v, maxVal)}</span><span className="dim"> │</span>
       </div>
     );
   });
   
-  lines.push(<div key="w5" className="dim">|{'-'.repeat(maxKey + 2)}|{'-'.repeat(maxVal + 2)}|</div>);
+  lines.push(<div key="w5" className="dim" style={{ whiteSpace: 'pre' }}>{botBorder}</div>);
   lines.push(<br key="w6"/>);
   lines.push(<div key="w7" className="dim">Local device mapping complete. Origin identified.</div>);
 
